@@ -11,11 +11,13 @@
     tools:context="com.softcloud.clickableimage.MainActivity">
 
     <com.softcloud.clickableimage.YUVImageButton
+        android:id="@+id/img_kobe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/kobe" />
 
     <com.softcloud.clickableimage.YUVImageButton
+        android:id="@+id/img_tifa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/tifa" />

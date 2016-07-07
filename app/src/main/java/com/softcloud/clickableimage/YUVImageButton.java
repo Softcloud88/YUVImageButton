@@ -10,7 +10,6 @@ import android.graphics.PixelFormat;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import android.view.View;
 import android.widget.ImageButton;
 
 /**
@@ -52,8 +51,8 @@ public class YUVImageButton extends ImageButton {
         super(context, attrs, defStyleAttr);
         resetColorMatrix();
         yScale = 1f;
-        uScale = 10f;
-        vScale = 10f;
+        uScale = 1f;
+        vScale = 1f;
     }
 
     public void setupYUVScale(float yScale, float uScale, float vScale) {
@@ -95,14 +94,15 @@ public class YUVImageButton extends ImageButton {
             case MotionEvent.ACTION_DOWN:
                 refreshImageWithYUVScale();
                 invalidate();
-                return true;
+                break;
             case MotionEvent.ACTION_UP:
                 colorMatrix.reset();
                 invalidate();
-                return true;
+                break;
             default:
-                return super.onTouchEvent(event);
+                break;
         }
+        return super.onTouchEvent(event);
     }
 
     private Bitmap drawableToBitmap(Drawable drawable) {
