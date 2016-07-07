@@ -1,6 +1,7 @@
 package com.softcloud.clickableimage;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.ColorMatrix;
@@ -38,6 +39,7 @@ public class YUVImageButton extends ImageButton {
     private float yScale;
     private float uScale;
     private float vScale;
+    private boolean applyYuvPressed;
 
     public YUVImageButton(Context context) {
         this(context, null);
@@ -50,9 +52,12 @@ public class YUVImageButton extends ImageButton {
     public YUVImageButton(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         resetColorMatrix();
-        yScale = 1f;
-        uScale = 1f;
-        vScale = 1f;
+        TypedArray yuvTypeArray = context.obtainStyledAttributes(attrs, R.styleable.YUVImageButton);
+        yScale = yuvTypeArray.getFloat(R.styleable.YUVImageButton_y_scale_pressed,1f);
+        uScale = yuvTypeArray.getFloat(R.styleable.YUVImageButton_u_scale_pressed,1f);
+        vScale = yuvTypeArray.getFloat(R.styleable.YUVImageButton_v_scale_pressed,1f);
+        applyYuvPressed = yuvTypeArray.getBoolean(R.styleable.YUVImageButton_apply_yuv_pressed,true);
+        yuvTypeArray.recycle();
     }
 
     public void setupYUVScaleWhenPressed(float yScale, float uScale, float vScale) {
@@ -71,10 +76,12 @@ public class YUVImageButton extends ImageButton {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        ColorMatrixColorFilter colorMatrixColorFilter = new ColorMatrixColorFilter(colorMatrix);
-        Paint paint = new Paint();
-        paint.setColorFilter(colorMatrixColorFilter);
-        canvas.drawBitmap(drawableToBitmap(getDrawable()), 0, 0, paint);
+        if (applyYuvPressed) {
+            ColorMatrixColorFilter colorMatrixColorFilter = new ColorMatrixColorFilter(colorMatrix);
+            Paint paint = new Paint();
+            paint.setColorFilter(colorMatrixColorFilter);
+            canvas.drawBitmap(drawableToBitmap(getDrawable()), 0, 0, paint);
+        }
     }
 
     private void refreshImageWithYUVScale() {

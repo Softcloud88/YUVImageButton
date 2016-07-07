@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="YUVImageButton">
+        <attr name="y_scale_pressed" format="float" />
+        <attr name="u_scale_pressed" format="float" />
+        <attr name="v_scale_pressed" format="float" />
+        <attr name="apply_yuv_pressed" format="boolean" />
+    </declare-styleable>
+
+</resources>

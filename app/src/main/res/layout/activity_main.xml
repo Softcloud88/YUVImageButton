@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:YUVImageButton="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -12,12 +13,14 @@
 
     <com.softcloud.clickableimage.YUVImageButton
         android:id="@+id/img_kobe"
+        YUVImageButton:y_scale_pressed="0.5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/kobe" />
 
     <com.softcloud.clickableimage.YUVImageButton
         android:id="@+id/img_tifa"
+        YUVImageButton:y_scale_pressed="2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/tifa" />
