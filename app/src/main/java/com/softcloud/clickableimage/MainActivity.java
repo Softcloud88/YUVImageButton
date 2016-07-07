@@ -21,8 +21,8 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        imgKobe.setupYUVScale(0.5f,1,1);
-        imgTifa.setupYUVScale(0.5f,1,1);
+        imgKobe.setupYUVScaleWhenPressed(0.5f,1,1);
+        imgTifa.setupYUVScaleWhenPressed(0.5f,1,1);
 
         imgKobe.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -55,7 +55,7 @@ public class YUVImageButton extends ImageButton {
         vScale = 1f;
     }
 
-    public void setupYUVScale(float yScale, float uScale, float vScale) {
+    public void setupYUVScaleWhenPressed(float yScale, float uScale, float vScale) {
         this.yScale = yScale;
         this.uScale = uScale;
         this.vScale = vScale;
